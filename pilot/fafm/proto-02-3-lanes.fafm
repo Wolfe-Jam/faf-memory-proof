@@ -1,0 +1,71 @@
+version: '1.0'
+namepoint: '@wolfejam-memory'
+created: '2026-05-13T12:58:00Z'
+last_etched: '2026-05-13T16:58:13.784407Z'
+retention: forever
+memory:
+  entries:
+  - source: proto-02-3-lanes.md
+    name: ''
+    description: ''
+    type: null
+    dates:
+    - '2026-05-12'
+    related:
+    - faf-defines-complementary-no-disputes.md
+    - feedback-ai-defaults-to-wins-framing.md
+    - feedback-wins-is-banned-word-in-faf.md
+    - rom-defines-ram-executes.md
+    body: '**Canonical three-lane phrasing — wolfejam 2026-05-12:**
+
+
+      > *FAF defines. MD instructs. AI codes — 3 lanes is best way to view it.*
+
+
+      Three distinct lanes, three distinct roles:
+
+
+      | Lane    | Role                                                       | Format                                            |
+
+      |---------|------------------------------------------------------------|---------------------------------------------------|
+
+      | **FAF** | defines (the spec / definitional layer)                    | `.faf` (IANA `application/vnd.faf+yaml`)          |
+
+      | **MD**  | instructs (translation of definition into AI-readable form)| CLAUDE.md, vendor MDs (GROK.md, AGENTS.md,
+      etc.)  |
+
+      | **AI**  | codes (executes against instructions)                      | session runtime                                   |
+
+
+      **ROM/RAM clarification — purified:** The ROM/RAM doctrine is **specifically about FAF↔AI** — FAF as ROM (read-once,
+      persistent definition), AI as RAM (session execution). MD is NOT part of the ROM/RAM dyad. MD is the instruction layer
+      that translates ROM into AI-readable form. The operational primitive lives in `rom-defines-ram-executes.md` (FAF=ROM,
+      AI=RAM, bi-sync binds — 2-clause form, complete). The 3-lane model keeps MD in its own lane.
+
+
+      **Meta-insight (companion):** AI defaults to competitive framings ("X wins over Y"). In FAF context this is a category
+      error — each lane has its own role; competition between lanes is incoherent. See `feedback-ai-defaults-to-wins-framing.md`.
+
+
+      **How to apply:**
+
+      - Public copy, doctrine references, architectural diagrams, README intros: lead with the 3-lane framing.
+
+      - Close comments / docs touching field-level questions: state the lanes; apparent "divergence" between `.faf` and CLAUDE.md
+      is lane confusion → resolve upstream at the definition lane (FAF), MD re-renders.
+
+      - For ROM/RAM specifically: scope to FAF↔AI only. Don''t include MD in ROM/RAM discussions.
+
+      - Public-facing question "where does FAF fit in the AI stack?" answers cleanly with this framing — no comparison shopping.
+
+
+      **Related:**
+
+      - `faf-defines-complementary-no-disputes.md` — supporting principle (FAF is complementary; no disputes). Now framed
+      inside the 3-lane structure.
+
+      - `feedback-wins-is-banned-word-in-faf.md` — surface word ban.
+
+      - `feedback-ai-defaults-to-wins-framing.md` — AI''s training tendency toward competition-framing.
+
+      - `rom-defines-ram-executes.md` — operational primitive (FAF=ROM, AI=RAM, bi-sync binds).'

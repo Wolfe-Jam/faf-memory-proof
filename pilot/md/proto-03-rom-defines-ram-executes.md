@@ -1,0 +1,25 @@
+---
+name: rom-defines-ram-executes
+description: "FAF is ROM, AI is RAM. ROM defines, RAM executes. Lowest irreducible level of the FAF/AI relationship. Bi-sync binds them."
+metadata: 
+  node_type: memory
+  type: project
+---
+
+**ROM defines. RAM executes.**
+
+What this is:
+- **FAF is ROM** (read-only memory — persistent, definitional)
+- **AI is RAM** (working memory — volatile, executional)
+- This is **the lowest the relationship can be** — irreducible primitive, no level beneath
+- **Bi-sync binds it** — the mechanism that keeps ROM and RAM coherent (concrete: `faf-sync` between project.faf and vendor MDs)
+
+**Why:** Names the FAF↔AI relationship at the hardware-primitive level. ROM/RAM is universal across every dev's mental model — no jargon, no rephrase needed. wolfejam 2026-05-13, correcting a prior ZEPH-session fabrication that extended this with a third "wins on conflict" clause (deleted same day, never said).
+
+**How to apply:**
+- Ground-truth framing for FAF↔AI in any explanation, pitch, or doc
+- Do NOT extend with a third clause — the 2-clause form is complete
+- "wins" is banned per [[feedback-wins-is-banned-word-in-faf]] — don't add precedence/tiebreaker language
+- Bi-sync IS the binding answer when someone asks "but what keeps them in sync?"
+
+Related: [[faf-gives-ai-rom-brand-register]] (canonical tagline "FAF — ROM for AI"), [[faf-defines-md-instructs-ai-codes-3-lanes]] (broader 3-lane doctrine where MD is its own lane).

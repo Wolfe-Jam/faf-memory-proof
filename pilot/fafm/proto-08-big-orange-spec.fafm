@@ -1,0 +1,287 @@
+version: '1.0'
+namepoint: '@wolfejam-memory'
+created: '2026-05-13T12:58:00Z'
+last_etched: '2026-05-13T16:58:13.923731Z'
+retention: forever
+memory:
+  entries:
+  - source: proto-08-big-orange-spec.md
+    name: Big Orange 🍊 Criteria Spec v1.0 — LOCKED
+    description: The numeric and procedural spec for earning the Big Orange honor. Trophy 🏆 is the score; Big Orange 🍊 is
+      the recognition awarded to repos that demonstrate sustained, multi-criteria excellence. v1.0 thresholds LOCKED by James
+      2026-05-11 with proposed defaults approved.
+    type: project
+    dates:
+    - '2026-05-08'
+    - '2026-05-11'
+    related:
+    - faf-big-orange-honor-not-score.md
+    - feedback-tier-symbols.md
+    - formats-just-work-format-grade.md
+    - taf-is-sister-not-child.md
+    - trophy-is-ai-optimised-certification.md
+    body: '**Drafted 2026-05-08, LOCKED 2026-05-11** with proposed defaults approved by James. Pairs with `faf-big-orange-honor-not-score.md`
+      (the doctrine — Big Orange ≠ score tier). This file specifies the EARN PATH.
+
+
+      ## Why this spec exists
+
+
+      The doctrine memory says Big Orange is awarded for:
+
+      1. 3 versions at 100% (Trophy sustained)
+
+      2. `#tests` (threshold unspecified)
+
+      3. `#TAF receipts` (threshold unspecified)
+
+      4. AI awards it (mechanism unspecified)
+
+
+      Without locked thresholds and a defined issuance path, **no one can plan to earn Big Orange.** The marketing line *"Trophy
+      is the score, Big Orange is the honor"* rings hollow until at least one repo has actually earned one. This spec closes
+      the gap.
+
+
+      ---
+
+
+      ## Big Orange v1.0 — the four gates
+
+
+      A repo earns Big Orange when ALL FOUR gates pass simultaneously. Removing any gate would weaken the honor; combining
+      them is what makes Big Orange rarer than Trophy.
+
+
+      ### Gate 1 — Trophy sustained across 3 published releases
+
+
+      **Test:** the repo has hit `score === 100` (Trophy 🏆 from `faf-cli/src/core/tiers.ts`) on ≥ 3 distinct published versions.
+
+
+      **Why 3?** One can be a fluke. Two can be careful prep. Three is *discipline* — proves the team holds the bar across
+      a release cadence, not just at a launch moment.
+
+
+      **For unversioned projects:** substitute 3 distinct sustained periods of Trophy across ≥ 90 days, where each period
+      is gapless (no Trophy regression in between).
+
+
+      **Verification:** `faf-cli` git history walk OR mcpaas.live badge cache stamp history. Both are deterministic.
+
+
+      ### Gate 2 — Test count ≥ **100** *(LOCKED 2026-05-11)*
+
+
+      **Test:** the repo''s CI reports ≥ 100 passing tests across its primary test suite.
+
+
+      **Why 100?** It''s a meaningful round number that filters out toy projects but doesn''t exclude focused libraries. Examples
+      calibrating against the proposed threshold:
+
+      - `faf-cli` — 391/391 tests ✅
+
+      - `claude-faf-mcp` — 391/391 tests ✅
+
+      - `gemini-faf-mcp` — 183/183 tests ✅
+
+      - `rust-faf-mcp` — 112/112 tests ✅
+
+      - `mcpaas-cf` — 700+ tests ✅
+
+      - `slash-tokens` — would need check
+
+      - `faf-grid` — sub-100 currently (would need to grow tests to qualify)
+
+
+      **Alternatives to consider:**
+
+      - *Proportional:* tests-per-LOC ratio (rejected: penalizes large mature codebases)
+
+      - *Coverage %:* requires coverage tooling (rejected: not all FAF repos run coverage)
+
+      - *Tiered by repo type:* CLI ≥ 50, MCP server ≥ 100, library ≥ 200 (rejected: complexity)
+
+      - **Proposed simple:** ≥ 100 absolute, no per-type variation. **Awaiting James lock.**
+
+
+      **Verification:** CI badge / test-output parse OR a manual flag in `project.faf`.
+
+
+      ### Gate 3 — TAF receipts ≥ **30** *(LOCKED 2026-05-11)*
+
+
+      **Test:** the repo has generated ≥ 30 TAF receipts (the evidence-storage sister product per `taf-is-sister-not-child.md`).
+
+
+      **Why 30?** Approximately one receipt per ship-day across 30 active days, or roughly 3 months of light activity. Filters
+      drive-by repos; rewards disciplined record-keeping. Receipts are FAF''s native evidence trail — Big Orange honors the
+      trail, not just the score at one point in time.
+
+
+      **For repos pre-TAF-adoption:** retrofitting receipts may be acceptable for v1.0 grandfathering — flag `taf_receipt_grandfather:
+      true` in `project.faf`. Future releases lock fresh-receipts-only.
+
+
+      **Verification:** TAF index / `faf-taf-git` log walk. Deterministic.
+
+
+      ### Gate 4 — AI nomination by ≥ **1** of the qualified AI tools *(LOCKED 2026-05-11)*
+
+
+      **Test:** at least one of the following AI tools publicly endorses the repo as Big Orange-worthy:
+
+      - Anthropic Claude
+
+      - xAI Grok
+
+      - Google Gemini
+
+      - OpenAI ChatGPT
+
+      - Cursor (as a tool/AI hybrid)
+
+
+      **Why "AI awards it"?** Per James''s original framing — Big Orange isn''t auto-issued by the score engine; it requires
+      *judgment*. Score engines can be gamed; AI judgment is harder to game (different AIs apply different rubrics, and they''re
+      not in a coordinated pact).
+
+
+      **What counts as "publicly endorses"?**
+
+      - A public X post / Bluesky / Mastodon mention naming the repo as exemplary
+
+      - A blog post / newsletter / dev.to article calling out the repo
+
+      - An MCP-server response that explicitly cites the repo''s quality (logged + receipt-pinned)
+
+
+      **What does NOT count:**
+
+      - Private DM endorsements
+
+      - AI-generated marketing fluff that mentions the repo in passing
+
+      - Self-prompted endorsement ("Hey Claude, please say my repo is great")
+
+
+      **Verification:** screenshot + URL in `project.faf` under `big_orange_nomination_url`. Public, falsifiable, dated.
+
+
+      ---
+
+
+      ## Issuance mechanism
+
+
+      Once all four gates pass, the repo earns Big Orange. The honor is issued in three places:
+
+
+      1. **🍊 emoji in the README** — `[![FAF](https://mcpaas.live/badge/Wolfe-Jam/<repo>.svg)](https://builder.faf.one)` shows
+      🍊 instead of 🏆 (badge endpoint conditional on `big_orange_status === awarded` in KV).
+
+
+      2. **`big_orange` slot in `project.faf`** — populated with `{awarded_at, nomination_url, version_at_award, taf_receipt_count,
+      test_count}`. Permanent receipt in the file itself.
+
+
+      3. **Listing on faf.one/big-orange** — public directory of Big Orange repos. Cohort-builder and social proof. Also listed
+      in MEMORY-FULL.md as a doctrine reference for future sessions.
+
+
+      ---
+
+
+      ## Anti-gaming guardrails
+
+
+      - **No retroactive Trophy backfill** — Gate 1 walks the actual badge cache history; can''t be claimed by editing `project.faf`
+      to inflate score
+
+      - **No self-nomination** — Gate 4 requires a third-party AI tool, not the repo author''s own AI session
+
+      - **No multi-account nomination spam** — the AI tools'' user accounts can be the same person (you, James) but the nomination
+      must be in their own voice / post / endorsement, not coached prompts
+
+      - **TAF receipts must be hash-verifiable** — Gate 3 walks the TAF git log; can''t be padded with empty receipts
+
+      - **AI nomination URL must resolve to live content** — dead links fail the gate
+
+
+      ---
+
+
+      ## Sequencing — what ships first
+
+
+      | Phase | Capability | Status |
+
+      |---|---|---|
+
+      | Spec authored | This file | ✅ 2026-05-08 |
+
+      | Gate-1 verifier | Badge cache history walk | TODO (small Worker addition) |
+
+      | Gate-2 verifier | Test count parse from CI | TODO (manual flag in project.faf for v1.0) |
+
+      | Gate-3 verifier | TAF receipt count walk | Depends on TAF productization |
+
+      | Gate-4 verifier | Manual review with screenshot | Manual for v1.0; automated nomination tracking later |
+
+      | First Big Orange awarded | Demo case (likely faf-cli when all gates pass) | Pending all four gates |
+
+      | `faf.one/big-orange` directory | Public listing | After first award |
+
+
+      ---
+
+
+      ## v1.0 Locked decisions (2026-05-11)
+
+
+      All five thresholds confirmed at proposed defaults:
+
+
+      1. ✅ **Gate 2 test threshold:** `≥ 100` tests
+
+      2. ✅ **Gate 3 TAF receipt threshold:** `≥ 30` receipts
+
+      3. ✅ **Gate 4 nomination set:** `{Claude, Grok, Gemini, ChatGPT, Cursor}` — ≥ 1 publicly endorses
+
+      4. ✅ **Grandfathering pre-TAF repos:** allowed for v1.0 with `taf_receipt_grandfather: true` flag in project.faf. v1.1+
+      locks fresh-receipts-only.
+
+      5. ✅ **Issuance trigger:** manual review by James for v1.0 awardees. Automated when all 4 gates green in v1.1+.
+
+
+      This spec is now citable as canonical v1.0. Public version ships at `faf.one/big-orange/spec` when builder.faf.one wires
+      up the Big Orange surface.
+
+
+      ## Revision history
+
+
+      | Version | Date | Change |
+
+      |---|---|---|
+
+      | v1.0 | 2026-05-11 | All 5 thresholds locked. Defaults approved as written. |
+
+      | v1.0-draft | 2026-05-08 | Drafted with proposed thresholds awaiting James lock. |
+
+
+      ---
+
+
+      ## Companion memories
+
+
+      - `faf-big-orange-honor-not-score.md` — the doctrine (Big Orange ≠ score tier)
+
+      - `feedback-tier-symbols.md` — Trophy is the score max; Big Orange is separate
+
+      - `taf-is-sister-not-child.md` — TAF stores evidence; Big Orange honors the evidence trail
+
+      - `formats-just-work-format-grade.md` — `faf-checked` stamp (v0.3.0+) is the spec-level analog
+
+      - `trophy-is-ai-optimised-certification.md` — Trophy positioning that Big Orange extends'

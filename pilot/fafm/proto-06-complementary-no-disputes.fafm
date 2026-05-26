@@ -1,0 +1,60 @@
+version: '1.0'
+namepoint: '@wolfejam-memory'
+created: '2026-05-13T12:58:00Z'
+last_etched: '2026-05-13T16:58:13.882091Z'
+retention: forever
+memory:
+  entries:
+  - source: proto-06-complementary-no-disputes.md
+    name: FAF defines. Complementary by default. No disputes in the stack.
+    description: Canonical three-clause framing of FAF's architectural posture. Supersedes the "wins on conflict" framing
+      — the architecture has no disputes to adjudicate, by design.
+    type: feedback
+    dates:
+    - '2026-05-12'
+    related:
+    - feedback-quote-doctrine-whole-or-skip.md
+    - feedback-wins-is-banned-word-in-faf.md
+    - rom-defines-ram-executes.md
+    body: '**Canonical three-clause phrasing — wolfejam 2026-05-12:**
+
+
+      > *FAF defines. It is complementary by default. It has no disputes in the stack.*
+
+
+      **Provenance:** This doctrine originated in wolfejam''s correspondence to `agent2agent@ietf.org` (the IETF Agent-to-Agent
+      mailing list). Not just internal coining — it has documented IETF-list provenance, which means the IETF audience working
+      on agent-to-agent protocols has already received this framing in writing. Citable as background in cover letters, sponsorship
+      requests, or doctrine references; the original letter is the canonical source.
+
+
+      **Why this matters:**
+
+      - *"FAF defines"* — `.faf` is the definition layer. Not a participant, the source.
+
+      - *"Complementary by default"* — FAF works alongside other layers (CLAUDE.md prose, README, codebase, vendor MDs); not
+      in competition with them.
+
+      - *"No disputes in the stack"* — the architecture is designed so the question "which value is authoritative?" doesn''t
+      arise. `.faf` defines; everything else renders or derives. Apparent conflicts are upstream definitional gaps, not stack
+      disputes.
+
+
+      **How to apply:**
+
+      - Public copy, doctrine references, technical writing about FAF behavior: use this framing.
+
+      - For close comments / docs that touch field-level questions (e.g., "what if `.faf` and CLAUDE.md diverge?"), the answer
+      is architectural — there are no disputes by design. `.faf` defines; CLAUDE.md is downstream rendering. "Divergence"
+      is the wrong frame.
+
+      - Quote the full three-clause phrase OR drop the doctrine and state behavior declaratively. Never quote a tail fragment.
+
+
+      **Related:**
+
+      - `feedback-wins-is-banned-word-in-faf.md` — surface-level word ban; this is the underlying architectural reason.
+
+      - `feedback-quote-doctrine-whole-or-skip.md` — fragment paraphrase rule.
+
+      - `rom-defines-ram-executes.md` — operational primitive (FAF=ROM, AI=RAM, bi-sync binds).'

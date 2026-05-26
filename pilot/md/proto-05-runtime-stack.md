@@ -1,0 +1,35 @@
+---
+name: faf-runtime-stack-bun-rust-zig
+description: Runtime-per-surface map for the FAF ecosystem. faf-cli = Bun. .fafb = Rust binary format. faf-cli is fully .fafb-enabled. Zig = WASM kernel.
+metadata: 
+  node_type: memory
+  type: project
+---
+
+**Runtime-per-surface map (durable architecture facts):**
+
+- **faf-cli** runs on **Bun** (not Node). Bun-native CLI.
+- **`.fafb`** (FAF binary format) is implemented in **Rust**.
+- **faf-cli is fully `.fafb`-enabled** — the CLI consumes/emits the Rust binary format natively.
+- **Zig** powers the WASM scoring kernel (`faf-wasm-core`, `faf-wasm-sdk`, `faf-wasm`) — deterministic, comptime, no hidden allocations.
+- **Python** lane = uvx-published MCP servers (e.g. `faf-agent-mcp` — Voice of FAF).
+- **TypeScript / Svelte 5** = frontend surfaces (faf.one, builder.faf.one, GALLERY-SVELTE).
+- **Edge / infra:** Vercel + Cloudflare Workers + Upstash Redis.
+
+**Format family (the .faf trio):**
+- `.faf` — YAML (project context, human-editable, IANA `application/vnd.faf+yaml`)
+- `.fafm` — VML / Voice Memory Layer
+- `.fafb` — Rust binary format (compact, fast, machine-canonical)
+
+**Why this matters:**
+- Default assumption that "JS CLI = Node" is wrong here — faf-cli is Bun.
+- When someone says "FAFb" they mean Rust, not a generic binary.
+- When someone says "WASM" in this ecosystem they mean Zig-compiled, not Rust-compiled.
+- Runtime choice is strategic, not accidental — Bun for CLI velocity, Rust for binary format integrity, Zig for deterministic WASM.
+
+**How to apply:**
+- Stack docs / profile / architecture conversations: lead with the right runtime per surface.
+- Don't conflate FAFb (Rust) with WASM kernel (Zig) — different lanes, different languages.
+- "faf-cli is fully FAFb-enabled" is a current capability, not future-tense. wolfejam confirmed 2026-05-13.
+
+Related: [[faf-app-inventory]] · [[zig-is-a-track-doctrine]] · [[engines-stay-private-oss-collab-sdk-only]].

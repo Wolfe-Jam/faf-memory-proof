@@ -1,0 +1,44 @@
+version: '1.0'
+namepoint: '@wolfejam-memory'
+created: '2026-05-13T12:58:00Z'
+last_etched: '2026-05-13T16:58:13.902416Z'
+retention: forever
+memory:
+  entries:
+  - source: proto-07-stateless-stubless.md
+    name: ''
+    description: ''
+    type: null
+    dates:
+    - '2026-05-11'
+    - '2026-05-12'
+    related:
+    - doesnt-claim-what-wasnt-measured.md
+    - mcpaas-live-sessionless-mcp-reference-impl-2026-05-11.md
+    - mcpaas-tasks-infrastructure-already-exists.md
+    - quiet-receipt-doctrine.md
+    - zeph-brand-register-locked.md
+    body: "# \"Stateless and Stubless\" — MCPaaS Brand Line\n\n**Coined by wolfejam 2026-05-12 03:48 UTC**, immediately after\
+      \ the v1.5.17 Tasks stub-copy refresh deploy.\n\n## Why It Works\n\n```\n  stateless     SEP-2567 / SEP-2575 — server\
+      \ holds no session\n                state between requests. Done. Live in prod\n                tonight at v1.5.17.\n\
+      \n  stubless      SEP-2663 full Tasks lifecycle — no more\n                _stub: true responses. The commitment. v1.6\n\
+      \                lane on infrastructure that already exists\n                (waitUntil + KV + crons).\n\n  Two adjectives.\
+      \ Alliterative. Parallel \"-less\" suffix on\n  both. \"Less\" describes what is NOT there as the feature —\n  no state,\
+      \ no stubs. Same shape as \"fearless,\" \"tireless.\"\n\n  Engineering identity in 3 words.\n```\n\n## Maps Directly\
+      \ to Tonight's Work\n\n| Word | Status | Receipt |\n|------|--------|---------|\n| Stateless | ✅ DONE | mcpaas.live\
+      \ v1.5.17 enforces SEP-2567 strict mode in production; HEADER_MISMATCH -32001 without proper headers; `_sessionMode:\
+      \ \"stateless\"` confirmed |\n| Stubless | ✅ DONE (2026-05-12 04:00 UTC) | mcpaas.live v1.6.0 ships real KV-backed task\
+      \ lifecycle. Live receipt: `tasks/create generate_faf_from_github Wolfe-Jam/grok-faf-mcp` → queued → running → complete\
+      \ in 700ms, score 100, full .faf returned. NO `_stub: true` anywhere. 8/8 Tyres tests green against deployed worker\
+      \ `<worker-id-redacted>`. |\n\n## Status — Both Halves Hold (2026-05-12)\n\n**The brand line is now deployable in public\
+      \ copy.** Both halves verifiable by curl against `mcpaas.live/mcp`:\n\n```\nstateless  →  POST /mcp without Mcp-Method\
+      \ header → -32001 HEADER_MISMATCH\n              (SEP-2567 strict-mode default enforced)\n\nstubless   →  POST /mcp\
+      \ tasks/create + tasks/get → full lifecycle returns\n              real result with NO `_stub: true` field\n       \
+      \       (SEP-2663 real KV-backed implementation, v1.6.0+)\n```\n\n**Deployable surfaces:**\n- X / public posts ✅\n-\
+      \ README copy ✅\n- mcpaas.live tagline ✅\n- vendor inbox lines ✅\n\nThe phrase served its purpose as a forcing function\
+      \ — coined 03:48 UTC, stubless deployed 04:00 UTC, ~12 minutes from coinage to receipt.\n\n## Cross-References\n\n-\
+      \ Stateless side: `mcpaas-live-sessionless-mcp-reference-impl-2026-05-11.md` (the deploy receipt)\n- Stubless side:\
+      \ `mcpaas-tasks-infrastructure-already-exists.md` (the path to make it true)\n- Doctrine: `doesnt-claim-what-wasnt-measured.md`\
+      \ — don't use the phrase publicly until both halves hold\n- Doctrine: `quiet-receipt-doctrine.md` — even after stubless\
+      \ ships, the receipt IS the broadcast; the phrase is the label, the curl-able behavior is the proof\n- Adjacent: `zeph-brand-register-locked.md`\
+      \ — same shape, MCPaaS brand register starts here"
