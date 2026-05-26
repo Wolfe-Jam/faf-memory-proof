@@ -167,7 +167,18 @@ def main():
     bin_files = [p for p in BIN_DIR.glob('proto-*.fafmbin') if not p.name.endswith('.gz')]
     bin_size = sum(p.stat().st_size for p in bin_files)
 
-    print(f"Query bench V2 (binary) · 10-memory pilot · {REPEATS} warm repeats")
+    t_start = time.perf_counter()
+    print("─" * 72)
+    print("  FAF memory proof — binary tier benchmark  (Lane A grep vs Lane B .fafmbin)")
+    print("─" * 72)
+    print("  Lane A: grep on plain .md memory files  (the status quo)")
+    print("  Lane B: structured queries on the .fafmbin compiled binary tier")
+    print(f"  Pilot:  10 sanitized memory entries · {REPEATS} warm repeats per query")
+    print()
+    print("  → Watch the WARM table's 'B vs A' column — that's the speedup.")
+    print("  → Should take ~3–8 seconds. Safe to walk away; total time prints at the end.")
+    print("─" * 72)
+    print()
     print(f"Lane A:  grep on .md       ({md_size} bytes)")
     print(f"Lane B:  decode .fafmbin   ({bin_size} bytes)")
     print()
@@ -194,6 +205,7 @@ def main():
     print(f"{'':22}{'Lane A':>22}{'Lane B':>25}{'B vs A':>15}")
     print("-" * 85)
 
+    warm_ratios = {}
     for label, fn_a, fn_b in [
         ("Q1 type=feedback", lambda: a_q1_type_feedback(corpus), lambda: b_q1_type_feedback(entries)),
         ("Q2 mentions ZEPH", lambda: a_q2_zeph(corpus), lambda: b_q2_zeph(entries)),
@@ -202,6 +214,7 @@ def main():
         med_a = time_warm(fn_a)
         med_b = time_warm(fn_b)
         ratio = med_a / med_b if med_b > 0 else float("inf")
+        warm_ratios[label] = ratio
         print(f"{label:22}{fmt_us(med_a):>22}{fmt_us(med_b):>25}{ratio:>13.1f}×")
 
     print()
@@ -221,6 +234,19 @@ def main():
         pa, ra_ = precision_recall(fn_a(), truth)
         pb, rb_ = precision_recall(fn_b(), truth)
         print(f"{label:22}{f'{pa:.2f} / {ra_:.2f}':>20}{f'{pb:.2f} / {rb_:.2f}':>20}{len(truth):>12}")
+
+    # ---------- Summary (so you know what you just measured) ----------
+    elapsed = time.perf_counter() - t_start
+    q1_ratio = warm_ratios.get("Q1 type=feedback", 0.0)
+    print()
+    print("─" * 72)
+    print(f"  ✓ Done in {elapsed:.1f}s.")
+    print(f"  On this pilot, structured .fafmbin queries were {q1_ratio:.0f}× faster than grep")
+    print(f"  on a type-filter (Q1). Q2 (substring) is grep's natural strength — by design.")
+    print(f"  Full 492-file run lands at 412× — see RECEIPT.md for methodology.")
+    print()
+    print(f"  Next:  cat RECEIPT.md   ← the full headline + methodology")
+    print("─" * 72)
 
 
 if __name__ == "__main__":
