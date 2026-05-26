@@ -24,24 +24,42 @@ Numbers are rounded down to **400+×** in headline copy ([strategic-undersell](h
 
 The repo ships with a **10-file sanitized pilot corpus** at every tier (`pilot/md/`, `pilot/fafm/`, `pilot/bin/`) so you can run the benchmarks without supplying your own data.
 
+### Setup
+
 ```bash
-# Bench the grep baseline (on the pilot):
-python query_bench.py
+git clone https://github.com/Wolfe-Jam/faf-memory-proof.git
+cd faf-memory-proof
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-# Bench the .fafmbin tier (on the pilot):
-python query_bench_binary.py
+### Run
 
-# Compile your own .md → .fafm → .fafmbin:
-python convert_md_to_fafm.py
-python compile_to_binary.py
+```bash
+# grep baseline on the pilot
+python3 query_bench.py
 
-# Or run the full pipeline + bench on your own memory dir:
-SRC_DIR=/path/to/your/memory python scale_up.py
+# .fafmbin tier on the pilot — the 412x lane
+python3 query_bench_binary.py
+
+# compile your own .md to .fafm to .fafmbin
+python3 convert_md_to_fafm.py
+python3 compile_to_binary.py
+
+# full pipeline + bench on your own memory dir
+SRC_DIR=/path/to/your/memory python3 scale_up.py
 ```
 
 All scripts honor environment variables for input/output paths — defaults point at the bundled pilot (e.g. `pilot/md`, `pilot/fafm`, `pilot/bin`). See each script's header.
 
-**Requirements:** Python 3.11+, PyYAML, stdlib only otherwise.
+### Notes
+
+- **Pilot vs full corpus.** Pilot bench (10 files) shows ~200× type-filter speedup; the headline **412×** is the full 492-file run — the structured tier's advantage scales with corpus size.
+- **macOS:** the system `python` alias may not exist — `python3` always works. Use the venv above to sidestep PEP 668 ("externally-managed-environment").
+- **Type vs substring.** Type/date filters dominate; full-text substring search is `grep`'s natural strength — by design.
+
+**Requirements:** Python 3.11+, PyYAML. Pinned in [`requirements.txt`](./requirements.txt).
 
 ---
 
