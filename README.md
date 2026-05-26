@@ -36,22 +36,36 @@ pip install -r requirements.txt
 
 ### Run
 
+Each block is paste-and-go — no comments inside, so any shell works.
+
+**1. Grep baseline on the pilot:**
 ```bash
-# grep baseline on the pilot
 python3 query_bench.py
+```
 
-# .fafmbin tier on the pilot — the 412x lane
+**2. `.fafmbin` tier on the pilot (the 412× lane):**
+```bash
 python3 query_bench_binary.py
+```
 
-# compile your own .md to .fafm to .fafmbin
+**3. Compile your own `.md` → `.fafm` → `.fafmbin`:**
+```bash
 python3 convert_md_to_fafm.py
 python3 compile_to_binary.py
+```
 
-# full pipeline + bench on your own memory dir
+**4. Full pipeline + bench on your own memory dir:**
+```bash
 SRC_DIR=/path/to/your/memory python3 scale_up.py
 ```
 
-All scripts honor environment variables for input/output paths — defaults point at the bundled pilot (e.g. `pilot/md`, `pilot/fafm`, `pilot/bin`). See each script's header.
+All scripts honor environment variables for input/output paths — defaults point at the bundled pilot (`pilot/md`, `pilot/fafm`, `pilot/bin`). See each script's header.
+
+### One-liner — fresh-clone smoke test
+
+```bash
+git clone https://github.com/Wolfe-Jam/faf-memory-proof.git && cd faf-memory-proof && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && python3 query_bench.py
+```
 
 ### Notes
 
