@@ -328,6 +328,37 @@ Same pattern. Different content. Both rest on IANA-registered source-tier format
 
 ---
 
+## 14. Subsequent validation (2026-05-27)
+
+The methodology in sections 1–13 was re-measured on additional corpora two weeks after the original receipt, to test whether the speedup (a) scales with corpus size and (b) holds cross-vendor.
+
+**Corpora tested:**
+
+| Corpus | Records | Notes |
+|---|---:|---|
+| **Smithsonian Open Access** (this RECEIPT's structural mirror, public-domain anchor) | 9,175 | EDAN/JSONL from `smithsonian-open-access.s3-us-west-2.amazonaws.com` — CC0, 18× this RECEIPT's 492-file corpus |
+| **Claude memory (current)** | 674 | Fresh Claude persistent memory dir — 1.37× this RECEIPT's corpus, real-world mixed frontmatter |
+
+**Measured results** (same Lane architecture as section 7, three lanes per query, ground truth verified identical):
+
+| Lens | Smithsonian | Claude memory (current) |
+|---|---:|---:|
+| **Per-query peak** (median of 100, vs subprocess `grep`) | **436×** | **1,399×** |
+| Amortized at N=100 (cumulative wall-clock incl. cold load) | 13.1× | 20.4× |
+| Breakeven (queries to amortize cold load) | 7.4 | 4.7 |
+
+**Conclusion:**
+
+- The methodology **scales** — 492 → 9,175 records (~18× larger), speedup ratio remained within 6% of the original 412× (Smithsonian: 436×).
+- The methodology **validates cross-vendor** — the follow-up repo was Grok + Claude co-built; both AI ecosystems' tooling ran the same Lane architecture and produced the same speedup class.
+- The Claude memory corpus has grown 37% since this RECEIPT (492 → 674 records) and the per-query peak grew with it (412× → 1,399×) — consistent with the structured tier scaling sublinearly while `grep` scales linearly.
+
+**Follow-up repo:** [xai-faf-proof](https://github.com/Wolfe-Jam/xai-faf-proof) — measured 2026-05-27, scripts + Smithsonian pilot + visual receipt card ([RESULTS.html](https://github.com/Wolfe-Jam/xai-faf-proof/blob/main/RESULTS.html)) in-repo.
+
+Receipts compound.
+
+---
+
 **End of receipt.**
 
 Falsifiable by re-running the scripts in this workspace against any directory of `.md` topic files with YAML frontmatter. The IANA registrations are independently verifiable at the URLs above.
