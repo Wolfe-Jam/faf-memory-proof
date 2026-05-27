@@ -20,6 +20,14 @@ Numbers are rounded down to **400+×** in headline copy ([strategic-undersell](h
 
 ---
 
+## Follow-up receipts
+
+The methodology has been scaled and validated cross-vendor since this repo shipped:
+
+- **[xai-faf-proof](https://github.com/Wolfe-Jam/xai-faf-proof)** — Grok + Claude co-built. Same methodology, run on the [Smithsonian Open Access](https://github.com/Smithsonian/OpenAccess) corpus (9,175 records, CC0 public-domain) AND a fresh Claude memory corpus (674 records). Peak speedups: **436×** Smithsonian (within 6% of the 412× measured here — methodology scales), **1,399×** Claude memory. Reproducible + falsifiable. See [section 14 of RECEIPT.md](./RECEIPT.md#14-subsequent-validation-2026-05-27) for the scaled numbers.
+
+---
+
 ## Reproduce in 30 seconds
 
 The repo ships with a **10-file sanitized pilot corpus** at every tier (`pilot/md/`, `pilot/fafm/`, `pilot/bin/`) so you can run the benchmarks without supplying your own data.
